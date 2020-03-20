@@ -132,7 +132,7 @@ class silk_profile(object):
         return DataCollector().request is not None
 
     def __call__(self, target):
-        if self._silk_installed():
+        if self._silk_installed() and target.__name__ != 'wrapped_target':
             def wrapped_target(*args, **kwargs):
                 with silk_meta_profiler():
                     try:
